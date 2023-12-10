@@ -10,7 +10,7 @@ import sys
 import os
 from snake import gameLoop_snake
 from space_invader import gameloop_space
-from pong import gameloop_pong
+from pong import setup_pong
 
 # Initialize Pygame
 pygame.init()
@@ -22,8 +22,8 @@ ARCADE_SIZE = 50
 PLAYER_SPEED = 5
 PLAY_TEXT_SIZE = 20
 SCALE_FACTOR = 3
-ANIMATION_ROWS = 4  # Number of rows in the player_animations.png
-ANIMATION_COLUMNS = 4  # Number of columns in each row
+ANIMATION_ROWS = 4
+ANIMATION_COLUMNS = 4
 
 # Colors
 WHITE = (255, 255, 255)
@@ -56,7 +56,7 @@ current_animation = 1  # Default to the down animation
 
 # Create arcade borne positions and associated games
 arcade_borne_info = [
-    {"position": (100, 100), "game": "Pong", "function": gameloop_pong},
+    {"position": (100, 100), "game": "Pong", "function": setup_pong},
     {"position": (350, 100), "game": "Snake", "function": gameLoop_snake},
     {"position": (600, 100), "game": "Space Invader", "function": gameloop_space},
 ]
