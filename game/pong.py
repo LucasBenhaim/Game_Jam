@@ -89,46 +89,47 @@ wn.onkeypress(left_paddle_down, "s")
 wn.onkeypress(right_paddle_up, "Up")
 wn.onkeypress(right_paddle_down, "Down")
 
-#Main game loop
-while True:
-    wn.update()
+def gameloop_pong():
+    #Main game loop
+    while True:
+        wn.update()
 
-    ball.setx(ball.xcor() + ball.dx)
-    ball.sety(ball.ycor() + ball.dy)
+        ball.setx(ball.xcor() + ball.dx)
+        ball.sety(ball.ycor() + ball.dy)
 
-    if ball.ycor() > 290:
-        ball.sety(290)
-        ball.dy *= -1
-        os.system("aplay data/pong/keb.wav&")
+        if ball.ycor() > 290:
+            ball.sety(290)
+            ball.dy *= -1
+            os.system("aplay data/pong/keb.wav&")
 
-    if ball.ycor() < -290:
-        ball.sety(-290)
-        ball.dy *= -1
-        os.system("aplay data/pong/keb.wav&")
+        if ball.ycor() < -290:
+            ball.sety(-290)
+            ball.dy *= -1
+            os.system("aplay data/pong/keb.wav&")
 
-    if ball.xcor() > 390:
-        ball.goto(0, 0)
-        ball.dx *= -1
-        score_1 += 1
-        pen.clear()
-        pen.write("Player 1: {}                            Player 2: {}".format(score_1, score_2), align="center", font=("Times New Roman", 26, "normal"))
-        os.system("aplay data/pong/pongo.wav&")
+        if ball.xcor() > 390:
+            ball.goto(0, 0)
+            ball.dx *= -1
+            score_1 += 1
+            pen.clear()
+            pen.write("Player 1: {}                            Player 2: {}".format(score_1, score_2), align="center", font=("Times New Roman", 26, "normal"))
+            os.system("aplay data/pong/pongo.wav&")
 
-    if ball.xcor() < -390:
-        ball.goto(0, 0)
-        ball.dx *= -1
-        score_2 += 1
-        pen.clear()
-        pen.write("Player 1: {}                            Player 2: {}".format(score_1, score_2), align="center", font=("Times New Roman", 26, "normal"))
-        os.system("aplay data/pong/pongo.wav&")
+        if ball.xcor() < -390:
+            ball.goto(0, 0)
+            ball.dx *= -1
+            score_2 += 1
+            pen.clear()
+            pen.write("Player 1: {}                            Player 2: {}".format(score_1, score_2), align="center", font=("Times New Roman", 26, "normal"))
+            os.system("aplay data/pong/pongo.wav&")
 
-    #Collision
-    if ball.xcor() > 340 and (ball.ycor() < right_paddle.ycor() + 40 and ball.ycor() > right_paddle.ycor() - 40):
-        ball.setx(340)
-        ball.dx *= -1
-        os.system("aplay data/pong/keb.wav&")
+        #Collision
+        if ball.xcor() > 340 and (ball.ycor() < right_paddle.ycor() + 40 and ball.ycor() > right_paddle.ycor() - 40):
+            ball.setx(340)
+            ball.dx *= -1
+            os.system("aplay data/pong/keb.wav&")
 
-    if ball.xcor() < -340 and (ball.ycor() < left_paddle.ycor() + 40 and ball.ycor() > left_paddle.ycor() - 40):
-        ball.setx(-340)
-        ball.dx *= -1
-        os.system("aplay data/pong/keb.wav&")
+        if ball.xcor() < -340 and (ball.ycor() < left_paddle.ycor() + 40 and ball.ycor() > left_paddle.ycor() - 40):
+            ball.setx(-340)
+            ball.dx *= -1
+            os.system("aplay data/pong/keb.wav&")
