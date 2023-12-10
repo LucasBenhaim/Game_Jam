@@ -75,8 +75,11 @@ invader_Xchange = []
 invader_Ychange = []
 no_of_invaders = 8
 
+# Inside your loop for initializing invaders
 for num in range(no_of_invaders):
-    invaderImage.append(pygame.image.load('game/data/space_invader/alien.png'))
+    original_alien_image = pygame.image.load('game/data/space_invader/alien.png')
+    scaled_alien_image = pygame.transform.scale(original_alien_image, (64, 97))  # Set new_width and new_height
+    invaderImage.append(scaled_alien_image)
     invader_X.append(random.randint(64, 737))
     invader_Y.append(random.randint(30, 180))
     invader_Xchange.append(0.6)
